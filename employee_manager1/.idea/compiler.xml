@@ -10,5 +10,7 @@
         <module name="employee_manager1.employee_manager1.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="employee_manager1.employee_manager1.main~1" target="17" />
   </component>
 </project>
