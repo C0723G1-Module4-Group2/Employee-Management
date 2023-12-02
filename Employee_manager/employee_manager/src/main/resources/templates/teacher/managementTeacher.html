@@ -269,7 +269,16 @@
                         <th>Chức Năng</th>
                         <td>
                             <a class="btn btn-primary" href="#" role="button">Edit</a>
-                            <a class="btn btn-primary" href="#" role="button">Delete</a>
+                            <a th:href="@{/teacher/delete(id=${teacher.getId()})}"
+                               data-bs-toggle="modal"
+                               data-bs-target="#deleteModal"
+                               th:attr="data-id=${teacher.getId()}, data-name=${teacher.getName()}"
+                               onclick="deleteTeacher(this)"
+                            >
+                                <button type="button" class="btn btn-sm btn-outline-danger">
+                                    Xoá
+                                </button>
+                            </a>
                             <a class="btn btn-primary" href="#" role="button">Back</a>
                         </td>
                     </tr>
@@ -278,5 +287,38 @@
         </div>
     </div>
 </div>
+
+
+
+// modal
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/teacher/delete" method="get">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Teacher:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure want to delete <span id="name"></span>?
+                    <input type="hidden" id="id" name="id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+<script>
+
+    function deleteTeacher(element) {
+        let id = element.getAttribute('data-id');
+        let name = element.getAttribute('data-name');
+        document.getElementById("name").innerHTML = name;
+        document.getElementById("id").value = id;
+    }
+</script>
