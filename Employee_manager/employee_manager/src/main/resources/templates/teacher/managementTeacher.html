@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -201,34 +201,22 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Trần Anh Tuấn</td>
-                <td>08/12/2004</td>
-                <td>TP Huế</td>
-                <td>Nam</td>
+            <tr th:each="teacher , status :${teachers}">
+                <td th:text="${status.count}"></td>
+                <td th:text="${teacher.getTeacherName()}"></td>
+                <td th:text="${teacher.getDateOfBirth()}"></td>
+                <td th:text="${teacher.getAddress()}"></td>
                 <td> <a class="btn btn-primary" href="#" role="button">Edit</a></td>
-                <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
-                <td> <a class="btn btn-primary" href="#" role="button">Back</a>   </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Trần Anh Tuấn</td>
-                <td>08/12/2004</td>
-                <td>TP Huế</td>
-                <td>Nam</td>
-                <td> <a class="btn btn-primary" href="#" role="button">Edit</a></td>
-                <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
-                <td> <a class="btn btn-primary" href="#" role="button">Back</a>   </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Trần Anh Tuấn</td>
-                <td>08/12/2004</td>
-                <td>TP Huế</td>
-                <td>Nam</td>
-                <td> <a class="btn btn-primary" href="#" role="button">Edit</a></td>
-                <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
+                <a th:href="@{/teacher/delete(id=${teacher.getTeacherId()})}"
+                   data-bs-toggle="modal"
+                   data-bs-target="#deleteModal"
+                   th:attr="data-id=${teacher.getTeacherId()}, data-name=${teacher.getTeacherName()()}"
+                   onclick="deleteTeacher(this)"
+                >
+                    <button type="button" class="btn btn-sm btn-outline-danger">
+                        Xoá
+                    </button>
+                </a>
                 <td> <a class="btn btn-primary" href="#" role="button">Back</a>   </td>
             </tr>
             </tbody>
@@ -269,16 +257,8 @@
                         <th>Chức Năng</th>
                         <td>
                             <a class="btn btn-primary" href="#" role="button">Edit</a>
-                            <a th:href="@{/teacher/delete(id=${teacher.getId()})}"
-                               data-bs-toggle="modal"
-                               data-bs-target="#deleteModal"
-                               th:attr="data-id=${teacher.getId()}, data-name=${teacher.getName()}"
-                               onclick="deleteTeacher(this)"
-                            >
-                                <button type="button" class="btn btn-sm btn-outline-danger">
-                                    Xoá
-                                </button>
-                            </a>
+                            <a class="btn btn-primary" href="#" role="button">Delete</a>
+
                             <a class="btn btn-primary" href="#" role="button">Back</a>
                         </td>
                     </tr>
