@@ -1,5 +1,6 @@
 package com.example.employee_manager.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -48,6 +49,7 @@ public class Teacher {
     @OneToOne
     @JoinColumn(name = "contract_id", nullable = false)
     private Contract contract;
+    @JsonBackReference
     @OneToMany(mappedBy = "teacher")
     private Set<TeachingSchedule> teachingSchedules;
 }
