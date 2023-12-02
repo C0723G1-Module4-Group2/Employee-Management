@@ -23,7 +23,7 @@ public class ClassesController {
 
     @GetMapping
     public String showList(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "") String searchingName, Model model) {
-        Pageable pageable = PageRequest.of(page, 10, Sort.by("name").ascending());
+        Pageable pageable = PageRequest.of(page, 10, Sort.by("class_name").ascending());
         Page<Classes> classesList = classesService.findAllPage(searchingName, pageable);
         model.addAttribute("classesList", classesList);
         model.addAttribute("searchingName", searchingName);
