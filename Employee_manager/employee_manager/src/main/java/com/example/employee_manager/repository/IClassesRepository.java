@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface IClassesRepository extends JpaRepository<Classes,Integer> {
-    @Query(value = "select * from classes where class_name like:name ", nativeQuery = true)
+    @Query(value = "select * from classes where class_name like:name", nativeQuery = true)
     Page<Classes> search(@Param("name") String name, Pageable pageable);
 }
