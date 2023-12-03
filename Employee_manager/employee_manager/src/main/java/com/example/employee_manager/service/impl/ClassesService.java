@@ -37,6 +37,6 @@ public class ClassesService implements IClassesService {
 
     @Override
     public Page<Classes> findAllPage(String name, Pageable pageable) {
-        return classesRepository.search(name, pageable);
+        return classesRepository.search("%" + name + "%", pageable);
     }
 }
