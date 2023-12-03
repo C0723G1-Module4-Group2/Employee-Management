@@ -74,83 +74,30 @@
         </div>
     </div>
     <div th:fragment="divider" class="b-example-divider"></div>
-
     <div>
-        <h3>Danh sách lớp học</h3>
         <div class="notify">
             <div>
-                <span th:text="${success}"></span>
+                <span th:text="${unsuccess}"></span>
             </div>
         </div>
-        <form action="/classes" method="get">
-            <input name="searchingName" placeholder="Nhập tên lớp học" th:value="${searchingName}">
-            <button>Tìm lớp học</button>
-        </form>
-        <br>
+        <h3>Thay đổi tên lớp </h3>
         <p>
-            <a class="btn btn-sm btn-outline-primary" th:href="@{/classes/create}">
-                Thêm mới lớp học
+            <a class="btn btn-sm btn-outline-primary" th:href="@{/classes}">
+                Quay lại Danh sách lớp học
             </a>
         </p>
-        <table id="classes">
-            <thead>
-            <tr>
-                <th>Số thứ tự</th>
-                <th>Tên lớp</th>
-                <th>Chỉnh sửa</th>
-                <th>Xoá</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="classes,status : ${classesList}">
-                <td th:text="${status.count}"></td>
-                <td th:text="${classes.className}"></td>
-                <td><a class="btn btn-sm btn-outline-warning" th:href="@{/classes/edit(id=${classes.getClassId()})}">Chỉnh
-                    Sửa</a></td>
-                <td>
-                    <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal"
-                            th:attr="data-id=${classes.getClassId()}, data-name=${classes.getClassName()}"
-                            onclick="deleteClass(this)">Xoá
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="5" th:if="${classesList.isEmpty()}" th:text="${'Không có lớp học nào'}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-</main>
-<!--MODAL-->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="/classes/delete" method="get">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deleteModalLabel">Xoá lớp:</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có chắc muốn xoá <span id="name"></span>?
-                    <input type="hidden" id="id" name="id">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        <div id="form">
+            <form th:action="@{/classes/update}" th:object="${editingClass}"
+                  method="POST" novalidate="novalidate">
+                <input type="hidden" th:field="*{classId}"/>
+                <div>
+                    <label for="name">Thay đổi tên lớp học: </label>
+                    <input type="text" id="name" th:field="*{className}"/>
+                    <input type="submit" value="Lưu thay đổi"/>
                 </div>
             </form>
         </div>
     </div>
-</div>
-<script>
-    function deleteClass(element) {
-        let id = element.getAttribute('data-id');
-        let name = element.getAttribute('data-name');
-        document.getElementById("name").innerHTML = name;
-        document.getElementById("id").value = id;
-    }
-</script>
+</main>
 </body>
 </html>
