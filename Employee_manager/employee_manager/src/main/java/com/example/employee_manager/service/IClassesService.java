@@ -11,6 +11,7 @@ public interface IClassesService {
     void addClass(Classes blog);
 
     Classes findById(int id);
+    Classes findByName(String name);
 
     void remove(int id);
 

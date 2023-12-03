@@ -31,8 +31,13 @@ public class ClassesService implements IClassesService {
     }
 
     @Override
+    public Classes findByName(String name) {
+        return classesRepository.findByName(name);
+    }
+
+    @Override
     public void remove(int id) {
-        classesRepository.deleteById(id);
+        classesRepository.deleteClass(id);
     }
 
     @Override

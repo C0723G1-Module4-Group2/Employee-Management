@@ -18,7 +18,7 @@ public class Classes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int classId;
-    @Column(unique = true,nullable = false)
+    @Column(nullable = false)
     private String className;
     private boolean status;
     @JsonBackReference
