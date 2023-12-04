@@ -31,4 +31,7 @@ public class TeacherServiceImpl implements ITeacherService {
     public void editTeacher(Teacher teacher) {
     iTeacherRepository.save(teacher);
     }
+    public Teacher findById(int id){
+        return iTeacherRepository.findById(id).get();
+    }
 }
