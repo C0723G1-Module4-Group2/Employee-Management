@@ -31,6 +31,15 @@
                 font-size: 3.5rem;
             }
         }
+        .imgInContent{
+            width: 100%;
+            height: 273px;
+            background-color: #3e3e3e;
+            background-image: none;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
     </style>
 
 
@@ -111,87 +120,184 @@
 </svg>
 
 
-<div class="row col-12">
-    <div class="col-2">
-        <main>
-            <h1 class="visually-hidden">Sidebars examples</h1>
-            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-                <a href="/static" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <svg class="bi me-2" width="32" height="32">
-                        <use xlink:href="#bug-fill"/>
-                    </svg>
-                    <span class="fs-4 text-uppercase">Quản lý đào tạo</span>
-                </a>
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">
-                            <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="#home"/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="row">
+                <div class="col-11" style="padding: 0">
+
+                    <h1 class="visually-hidden">Sidebars examples</h1>
+                    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="height: 100% ; padding: 0px">
+                        <a href="/static"
+                           class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <svg class="bi me-2" width="32" height="32">
+                                <use xlink:href="#bug-fill"/>
                             </svg>
-                            Trang chủ
+                            <span class="fs-4 text-uppercase">Quản lý đào tạo</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                            <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="#chart"/>
-                            </svg>
-                            Thống kê
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                            <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="#table"/>
-                            </svg>
-                            Lịch giảng dạy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                            <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="#people"/>
-                            </svg>
-                            Giảng viên
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                            <svg class="bi me-2" width="16" height="16">
-                                <use xlink:href="#people-circle"/>
-                            </svg>
-                            Tài khoản
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-                <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                       id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Mangekyou_Sharingan_Kakashi.svg/1024px-Mangekyou_Sharingan_Kakashi.svg.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>Admin</strong>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">Hồ sơ</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
-                    </ul>
+                        <hr>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#home"/>
+                                    </svg>
+                                    Trang chủ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#chart"/>
+                                    </svg>
+                                    Thống kê
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#table"/>
+                                    </svg>
+                                    Lịch giảng dạy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#people"/>
+                                    </svg>
+                                    Giảng viên
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link text-white">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#people-circle"/>
+                                    </svg>
+                                    Tài khoản
+                                </a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="dropdown">
+                            <a href="#"
+                               class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                               style="padding: 0px"
+                               id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Mangekyou_Sharingan_Kakashi.svg/1024px-Mangekyou_Sharingan_Kakashi.svg.png"
+                                     alt="" width="32" height="32" class="rounded-circle me-2">
+                                <strong>Admin</strong>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow"
+                                aria-labelledby="dropdownUser1">
+                                <li><a class="dropdown-item" href="#">Hồ sơ</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="b-example-divider col-1"></div>
+            </div>
+        </div>
+
+        <div class="col-9" style="padding: 0">
+            <div class="row">
+
+                <div class="col-6" style="padding: 0">
+                    <table class="table table-hover" style="background-color:#708090 ;">
+                        <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Ngày/Tháng/NămSinh</th>
+                            <th scope="col">Địa chỉ</th>
+                            <th scope="col">Giới Tính</th>
+                            <th scope="col" colspan="3">Chức năng</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Trần Anh Tuấn</td>
+                            <td>08/12/2004</td>
+                            <td>TP Huế</td>
+                            <td>Nam</td>
+                            <td><a class="btn btn-primary" href="#" role="button">Edit</a></td>
+                            <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
+                            <td><a class="btn btn-primary" href="#" role="button">Back</a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Trần Anh Tuấn</td>
+                            <td>08/12/2004</td>
+                            <td>TP Huế</td>
+                            <td>Nam</td>
+                            <td><a class="btn btn-primary" href="#" role="button">Edit</a></td>
+                            <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
+                            <td><a class="btn btn-primary" href="#" role="button">Back</a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Trần Anh Tuấn</td>
+                            <td>08/12/2004</td>
+                            <td>TP Huế</td>
+                            <td>Nam</td>
+                            <td><a class="btn btn-primary" href="#" role="button">Edit</a></td>
+                            <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
+                            <td><a class="btn btn-primary" href="#" role="button">Back</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6" style="padding: 0">
+                    <div class="row col-12">
+                        <div class="col-5">
+                            <img class="imgInContent" src="https://mcdn.coolmate.me/image/March2023/meme-8_46.jpg">
+                        </div>
+                        <div class="col-7">
+                    <table class="">
+                        <tr>
+                            <th>Tên:</th>
+                            <td>Tuấn</td>
+                        </tr>
+                        <tr>
+                            <th>Ngày Tháng Năm Sinh:</th>
+                            <td>08/12/2004</td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ</th>
+                            <td>TP Huế</td>
+                        </tr>
+                        <tr>
+                            <th>Giới Tính</th>
+                            <td>Nam</td>
+                        </tr>
+                        <tr>
+                            <th>Số Điện Thoại:</th>
+                            <td>0387274038</td>
+                        </tr>
+                        <tr>
+                            <th>Lương</th>
+                            <td>1,000,000,000$</td>
+                        </tr>
+                        <tr>
+                            <th>Chức Năng</th>
+                            <td>
+                                <a class="btn btn-primary" href="#" role="button">Edit</a>
+                                <a class="btn btn-primary" href="#" role="button">Delete</a>
+                                <a class="btn btn-primary" href="#" role="button">Back</a>
+                            </td>
+                        </tr>
+                    </table>
+                        </div>
+                </div>
                 </div>
             </div>
-            <div class="b-example-divider">
-            </div>
-
-
-        </main>
-    </div>
-    <div class="col-5">
-
-    </div>
-    <div class="col-5">
-
+        </div>
     </div>
 </div>
 

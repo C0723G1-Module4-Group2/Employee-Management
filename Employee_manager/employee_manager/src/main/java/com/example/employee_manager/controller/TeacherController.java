@@ -18,7 +18,7 @@ public class TeacherController {
     public String showManagementTeacher(Model model){
         List<Teacher> teacherList = iTeacherService.getAll();
         model.addAttribute("teachers",teacherList);
-        return "/index";
+        return "/teacher/managementTeacher";
     }
     @GetMapping("/add")
     public String showFormTeacher(){
@@ -50,7 +50,7 @@ public class TeacherController {
     @GetMapping("/delete")
     public String delete(@RequestParam() int id){
         iTeacherService.deleteTeacher(id);
-        return "redirect:/blog";
+        return "redirect:/teacher";
     }
 
 
