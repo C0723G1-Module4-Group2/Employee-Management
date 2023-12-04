@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -220,34 +220,25 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Trần Anh Tuấn</td>
-                            <td>08/12/2004</td>
-                            <td>TP Huế</td>
-                            <td>Nam</td>
+                        <tr th:each="teacher , status : ${teachers}">
+                            <td th:text="${status.count}"></td>
+                            <td th:text="${teacher.getTeacherName()}"></td>
+                            <td th:text="${teacher.getDateOfBirth()}"></td>
+                            <td th:text="${teacher.getAddress()}"></td>
+                            <td>
+                                <span th:if="${teacher.gender} == true">Nam</span>
+                                <span th:unless="${teacher.gender} == true">Nữ</span>
+                            </td>
                             <td><a class="btn btn-primary" href="#" role="button">Edit</a></td>
-                            <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
-                            <td><a class="btn btn-primary" href="#" role="button">Back</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Trần Anh Tuấn</td>
-                            <td>08/12/2004</td>
-                            <td>TP Huế</td>
-                            <td>Nam</td>
-                            <td><a class="btn btn-primary" href="#" role="button">Edit</a></td>
-                            <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
-                            <td><a class="btn btn-primary" href="#" role="button">Back</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Trần Anh Tuấn</td>
-                            <td>08/12/2004</td>
-                            <td>TP Huế</td>
-                            <td>Nam</td>
-                            <td><a class="btn btn-primary" href="#" role="button">Edit</a></td>
-                            <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
+                            <td><a th:href="@{/teacher/delete(id=${teacher.getTeacherId()})}"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#deleteModal"
+                                   th:attr="data-id=${teacher.getTeacherId()}, data-name=${teacher.getTeacherName()}"
+                                   onclick="deleteTeacher(this)">
+                                <button type="button" class="btn btn-sm btn-outline-danger">
+                                    Xoá
+                                </button>
+                            </a></td>
                             <td><a class="btn btn-primary" href="#" role="button">Back</a></td>
                         </tr>
                         </tbody>
@@ -259,47 +250,77 @@
                             <img class="imgInContent" src="https://mcdn.coolmate.me/image/March2023/meme-8_46.jpg">
                         </div>
                         <div class="col-7">
-                    <table class="">
-                        <tr>
-                            <th>Tên:</th>
-                            <td>Tuấn</td>
-                        </tr>
-                        <tr>
-                            <th>Ngày Tháng Năm Sinh:</th>
-                            <td>08/12/2004</td>
-                        </tr>
-                        <tr>
-                            <th>Địa chỉ</th>
-                            <td>TP Huế</td>
-                        </tr>
-                        <tr>
-                            <th>Giới Tính</th>
-                            <td>Nam</td>
-                        </tr>
-                        <tr>
-                            <th>Số Điện Thoại:</th>
-                            <td>0387274038</td>
-                        </tr>
-                        <tr>
-                            <th>Lương</th>
-                            <td>1,000,000,000$</td>
-                        </tr>
-                        <tr>
-                            <th>Chức Năng</th>
-                            <td>
-                                <a class="btn btn-primary" href="#" role="button">Edit</a>
-                                <a class="btn btn-primary" href="#" role="button">Delete</a>
-                                <a class="btn btn-primary" href="#" role="button">Back</a>
-                            </td>
-                        </tr>
-                    </table>
+                            <table class="">
+                                <tr>
+                                    <th>Tên:</th>
+                                    <td>Tuấn</td>
+                                </tr>
+                                <tr>
+                                    <th>Ngày Tháng Năm Sinh:</th>
+                                    <td>08/12/2004</td>
+                                </tr>
+                                <tr>
+                                    <th>Địa chỉ</th>
+                                    <td>TP Huế</td>
+                                </tr>
+                                <tr>
+                                    <th>Giới Tính</th>
+                                    <td>Nam</td>
+                                </tr>
+                                <tr>
+                                    <th>Số Điện Thoại:</th>
+                                    <td>0387274038</td>
+                                </tr>
+                                <tr>
+                                    <th>Lương</th>
+                                    <td>1,000,000,000$</td>
+                                </tr>
+                                <tr>
+                                    <th>Chức Năng</th>
+                                    <td>
+                                        <a class="btn btn-primary" href="#" role="button">Edit</a>
+                                        <a class="btn btn-primary" href="#" role="button">Delete</a>
+                                        <a class="btn btn-primary" href="#" role="button">Back</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/blog/delete" method="get">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Product:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure want to delete <span id="name"></span>?
+                    <input type="hidden" id="id" name="id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
+<script>
+
+    function deleteTeacher(element) {
+        let id = element.getAttribute('data-id');
+        let name = element.getAttribute('data-name');
+        document.getElementById("name").innerHTML = name;
+        document.getElementById("id").value = id;
+    }
+</script>

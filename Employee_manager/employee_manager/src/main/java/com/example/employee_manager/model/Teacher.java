@@ -1,5 +1,6 @@
 package com.example.employee_manager.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,6 +42,8 @@ public class Teacher {
     private String basicSalary;
     @Column(nullable = false)
     private String warningCoefficient;
+    @Column(columnDefinition = "varchar(255) default 'https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg' ")
+    private String imgOfTeacher;
     private boolean status;
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -48,6 +51,7 @@ public class Teacher {
     @OneToOne
     @JoinColumn(name = "contract_id", nullable = false)
     private Contract contract;
+    @JsonBackReference
     @OneToMany(mappedBy = "teacher")
     private Set<TeachingSchedule> teachingSchedules;
 }
