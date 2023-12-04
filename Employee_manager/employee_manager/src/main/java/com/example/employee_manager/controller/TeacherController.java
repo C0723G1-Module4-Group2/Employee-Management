@@ -18,7 +18,7 @@ public class TeacherController {
     public String showManagementTeacher(Model model){
         List<Teacher> teacherList = iTeacherService.getAll();
         model.addAttribute("teachers",teacherList);
-        return "/teacher/managementTeacher";
+        return "/index";
     }
     @GetMapping("/add")
     public String showFormTeacher(){
