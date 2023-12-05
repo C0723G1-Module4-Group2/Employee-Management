@@ -90,10 +90,10 @@
             <form th:action="@{/classes/save}" th:object="${newClass}"
                   method="POST" novalidate="novalidate">
                 <input type="hidden" th:field="*{classId}"/>
-                <div>
-                    <label for="name">Vui lòng nhập tên lớp muốn thêm: </label>
+                <p>Vui lòng nhập tên lớp muốn thêm: </p>
+                <div class="input-group">
                     <input type="text" id="name" th:field="*{className}" placeholder="Nhập tên lớp"/>
-                    <input type="submit" value="Thêm lớp học này"/>
+                    <input type="submit" value="Thêm lớp học này" class="btn btn-sm btn-outline-success"/>
                 </div>
             </form>
     </div>
