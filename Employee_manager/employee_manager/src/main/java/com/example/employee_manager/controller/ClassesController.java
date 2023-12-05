@@ -59,6 +59,7 @@ public class ClassesController {
     @PostMapping("/update")
     public String update(@ModelAttribute Classes editingClass, RedirectAttributes attributes) {
         if (classesService.findByName(editingClass.getClassName()) == null) {
+            editingClass.setStatus(true);
             classesService.addClass(editingClass);
             attributes.addFlashAttribute("success", "Đã sửa thành công!");
             return "redirect:/classes";

@@ -75,16 +75,16 @@
     </div>
     <div th:fragment="divider" class="b-example-divider"></div>
 
-    <div>
+    <div class="container">
         <h3>Danh sách lớp học</h3>
         <div class="notify">
             <div>
                 <span th:text="${success}"></span>
             </div>
         </div>
-        <form action="/classes" method="get">
-            <input name="searchingName" placeholder="Nhập tên lớp học" th:value="${searchingName}">
-            <button>Tìm lớp học</button>
+        <form action="/classes" method="get" class="d-flex">
+            <input class="form-control me-2" name="searchingName" placeholder="Nhập tên lớp học" th:value="${searchingName}" aria-label="Search" style="width: 30%">
+            <button class="btn btn-sm btn-outline-success">Tìm kiếm</button>
         </form>
         <br>
         <p>
@@ -120,8 +120,16 @@
             </tr>
             </tbody>
         </table>
+<!--phan trang-->
+        <div>
+            <a th:if="${classesList.hasPrevious()}"
+               th:href="@{/classes(page=${classesList.getNumber()-1},searchingName=${searchingName})}">Trang trước</a>
+            <span th:text="${classesList.number+1}"></span>/
+            <span th:text="${classesList.totalPages}"></span>
+            <a th:if="${classesList.hasNext()}"
+               th:href="@{/classes(page=${classesList.number+1},searchingName=${searchingName})}">Trang sau</a>
+        </div>
     </div>
-
 </main>
 <!--MODAL-->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
