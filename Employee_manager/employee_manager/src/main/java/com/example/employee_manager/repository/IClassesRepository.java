@@ -9,11 +9,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface IClassesRepository extends JpaRepository<Classes,Integer> {
-    @Query(value = "select * from classes where class_name like:name and status=0", nativeQuery = true)
+    @Query(value = "select * from classes where class_name like:name and status=1", nativeQuery = true)
     Page<Classes> search(@Param("name") String name, Pageable pageable);
-    @Query(value = "select * from classes where class_name =:name and status=0", nativeQuery = true)
+    @Query(value = "select * from classes where class_name =:name and status=1", nativeQuery = true)
     Classes findByName(@Param("name") String name);
     @Modifying
-    @Query(value = "update classes set status=1 where class_id =:id", nativeQuery = true)
+    @Query(value = "update classes set status=0 where class_id =:id", nativeQuery = true)
     void deleteClass(@Param("id") int id);
 }

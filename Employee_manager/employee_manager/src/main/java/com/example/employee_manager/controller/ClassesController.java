@@ -40,6 +40,7 @@ public class ClassesController {
     @PostMapping("/save")
     public String save(@ModelAttribute Classes newClass, RedirectAttributes attributes) {
         if (classesService.findByName(newClass.getClassName()) == null) {
+            newClass.setStatus(true);
             classesService.addClass(newClass);
             attributes.addFlashAttribute("success", "Thêm mới thành công!");
             return "redirect:/classes";
