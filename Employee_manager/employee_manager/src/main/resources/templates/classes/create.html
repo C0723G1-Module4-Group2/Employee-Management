@@ -87,12 +87,14 @@
             </a>
         </p>
         <div id="form">
-            <form th:action="@{/classes/save}" th:object="${newClass}"
-                  method="POST" novalidate="novalidate">
+            <form th:action="@{/classes/save}" th:object="${newClassDto}"
+                  method="POST">
                 <input type="hidden" th:field="*{classId}"/>
                 <p>Vui lòng nhập tên lớp muốn thêm: </p>
                 <div class="input-group">
-                    <input type="text" id="name" th:field="*{className}" placeholder="Nhập tên lớp"/>
+                    <input type="text" id="className" required th:field="*{className}" placeholder="Nhập tên lớp"/>
+                    <span th:if="${#fields.hasErrors('className')}" th:errors="*{className}"></span>
+<!--                    <small style="color: red" th:if="${#fields.hasErrors('className')}" th:errors="*{className}"></small><br>-->
                     <input type="submit" value="Thêm lớp học này" class="btn btn-sm btn-outline-success"/>
                 </div>
             </form>

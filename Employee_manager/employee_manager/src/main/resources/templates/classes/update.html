@@ -87,12 +87,12 @@
             </a>
         </p>
         <div id="form">
-            <form th:action="@{/classes/update}" th:object="${editingClass}"
-                  method="POST" novalidate="novalidate">
+            <form th:action="@{/classes/update}" th:object="${editingClassDto}"
+                  method="POST" >
                 <input type="hidden" th:field="*{classId}"/>
                 <div>
                     <label for="name">Thay đổi tên lớp học: </label>
-                    <input type="text" id="name" th:field="*{className}"/>
+                    <input type="text" required id="name" th:field="*{className}">
                     <input type="submit" value="Lưu thay đổi"/>
                 </div>
             </form>
