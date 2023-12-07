@@ -1,11 +1,13 @@
     package com.example.employee_manager.model;
 
     import com.fasterxml.jackson.annotation.JsonBackReference;
+    import com.fasterxml.jackson.annotation.JsonIgnore;
     import jakarta.persistence.*;
     import lombok.AllArgsConstructor;
     import lombok.Getter;
     import lombok.NoArgsConstructor;
     import lombok.Setter;
+    import org.springframework.format.annotation.DateTimeFormat;
 
     import java.time.LocalDate;
 
@@ -22,20 +24,24 @@
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int teachingScheduleId;
-        @JsonBackReference
+        @JsonIgnore
         @ManyToOne
         @JoinColumn(name = "time_sheet_id",nullable = false)
         private TimeSheets timeSheets;
-        @JsonBackReference
+        @JsonIgnore
         @ManyToOne
         @JoinColumn(name = "class_id",nullable = false)
         private Classes classes;
-        @JsonBackReference
+
+        @JsonIgnore
         @ManyToOne
         @JoinColumn(name = "teacher_id",nullable = false)
         private Teacher teacher;
         @Column( name = "start_date",nullable = false)
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
         private LocalDate startDate;
+
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
         @Column(name="end_date",nullable = false)
         private LocalDate endDate;
         private boolean status;

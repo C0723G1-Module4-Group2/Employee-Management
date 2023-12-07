@@ -19,6 +19,6 @@ public class TeachingScheduleController {
     public String showCalendar(Model model){
         List<TeachingSchedule> teachingSchedules = teachingScheduleService.getAll();
         model.addAttribute("listSchedule",teachingSchedules);
-        return "/teaching_schedule/list1";
+        return "teaching_schedule/list";
     }
 }

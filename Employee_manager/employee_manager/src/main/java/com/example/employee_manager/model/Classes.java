@@ -24,4 +24,8 @@ public class Classes {
     @JsonBackReference
     @OneToMany(mappedBy = "classes")
     private Set<TeachingSchedule> teachingSchedules;
+
+    public Classes(int classId) {
+        this.classId = classId;
+    }
 }

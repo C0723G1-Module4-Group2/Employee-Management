@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,13 +21,17 @@ public class TimeSheets {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int timeSheetId;
-    @Column(unique = true, nullable = false)
+    @Column( name = "time_sheet_name",unique = true, nullable = false)
     private String timeSheetName;
-    @Column(nullable = false)
+    @Column(name = "start_time",nullable = false)
     private LocalTime startTime;
-    @Column(nullable = false)
+    @Column(name = "end_time",nullable = false)
     private LocalTime endTime;
     @JsonBackReference
     @OneToMany(mappedBy = "timeSheets")
     private Set<TeachingSchedule> teachingSchedules;
+
+    public TimeSheets(int timeSheetId) {
+        this.timeSheetId = timeSheetId;
+    }
 }
